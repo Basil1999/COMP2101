@@ -53,8 +53,6 @@ fi
   ###############
 # Main        #
 ###############
-cat <<EOF
+message="Welcome to planet $hostname, $title $myname"
 
-Welcome to planet $hostname, "$title $myname"
-
-EOF
+cowsay $message
