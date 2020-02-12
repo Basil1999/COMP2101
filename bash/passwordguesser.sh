@@ -9,24 +9,49 @@
 # TASK 3: Improve it by giving them 5 tries to get it right before failing
 #           *** Do not use the exit command, and do not use a loop (e.g. while or for)
 referenceString="Password"
-read -s -p "Enter Text for Comparision:" myString
-echo
+
+echo "guess a password"
+read guessPassword
+
 if [ $myString = $referenceString ]; then
-echo "You got it right.."; echo
+then
+  echo "thank you"
 else
- echo "Try something else.."
- read -s -p "Enter Another Text for Comparision:" myString
+  echo "wrong password."
+  fi
+
+
+  referenceString="Password"
+  read -s -p "Enter Text for Comparision:" myString
+  echo
   if [ $myString = $referenceString ]; then
-   echo "You got it right.."; echo
+  echo "You got it right.."; echo
   else
-    echo
-    echo "Try something else.."
-    read -s -p "Enter Another Text for Comparision:" myString
-     if [ $myString = $referenceString ]; then
-       echo "You got it right.."; echo
-     else
-       echo
-       echo "Try something else.."
+   echo "Try something else.."
+   read -s -p "Enter Another Text for Comparision:" myString
+    if [ $myString = $referenceString ]; then
+     echo "You got it right.."; echo
+    else
+      echo
+      echo "Try something else.."
+      read -s -p "Enter Another Text for Comparision:" myString
+       if [ $myString = $referenceString ]; then
+         echo "You got it right.."; echo
+       else
+         echo
+         echo "Try something else.."
+         read -s -p "Enter Text for Comparision:" myString
+         echo
+         if [ $myString = $referenceString ]; then
+         echo "You got it right.."; echo
+         else
+          echo "Try something else.."
+          read -s -p "Enter Text for Comparision:" myString
+          echo
+          if [ $myString = $referenceString ]; then
+          echo "You got it right.."; echo
+          else
+           echo "Try something else.."
 	 fi
    fi
 fi
