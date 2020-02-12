@@ -1,60 +1,54 @@
 #!/bin/bash
 #
-# This script produces a dynamic welcome message
+# This script produces the dynamic welcome message
 # it should look like
-#   Welcome to planet hostname, title name!
+# Welcome to planet hostname, title name!
 
-# Task 1: Use the variable $USER instead of the myname variable to get your name
-# Task 2: Dynamically generate the value for your hostname variable using the hostname command - e.g. $(hostname)
-# Task 3: Add the time and day of the week to the welcome message using the format shown below
-#   Use a format like this:
-#   It is weekday at HH:MM AM.
-# Task 4: Set the title using the day of the week
-#   e.g. On Monday it might be Optimist, Tuesday might be Realist, Wednesday might be Pessimist, etc.
-#   You will need multiple tests to set a title
-#   Invent your own titles, do not use the ones from this example
+# Improve this script by using the value in the automatic variable $USER for the name
+# Improve this script by adding some time and day of the week information to the welcome message
+# Use a format like this:
+# It is HH:MM AM on weekday.
 
 ###############
-# Variables   #
+# Variables #
 ###############
-
-myname="USER"
-hostname="$(hostname)"
-
+name="$USER"
+date=$(date +'%I:%M %p')
+hostname=$(hostname)
 day=$(date +%A)
-hour=$(date +%I)
-minute=$(date +%M)
-meridian=$(date +%P)
-echo "it is $day at $hour:$minute $meridian"
-
-if [ $day == "Monday" ]
-then
-  title="monday might be optimisti"
-elif [ $day == "Tuesday" ]
-then
-  title="tuesday might be realistic"
-elif [ $day == "Wednesday" ]
-then
-  title="wednesday might be optimistic"
-elif [ $day == "Thursday" ]
-then
-  title="thursday is the day after Wednesday"
-elif [ $day == "Friday" ]
-then
-  title="friday is the day after thursday"
-elif [ $day == "Saturday" ]
-then
-  title="saturday is the day after friday"
-elif [ $day == "Sunday" ]
-then
-  title="sunday is the day after saturday"
-
-fi
-  ###############
-# Main        #
+###############
+# Main #
 ###############
 cat <<EOF
-
-Welcome to planet $hostname, "$title $myname"
-
+if [ "$day" = "Monday" ]
+then
+Welcome to Earth $hostname, Sudoers $name!
+else
+if [ "$day" = "Tuesday" ]
+then
+Welcome to Earth $hostname, Admins $name!
+else
+if [ "$day" = "Wednesday" ]
+then
+Welcome to Earth $hostname, Sysadmins $name!
+else
+if [ "$day" = "Thursday" ]
+then
+Welcome to Earth $hostname, Aliens $name!
+else
+if [ "$day" = "Friday" ]
+then
+Welcome to Earth $hostname, Alchoholic $name!
+else
+if [ "$day" = "Saturday" ]
+then
+Welcome to Earth $hostname, Motivated $name!
+else
+Welcome to Earth $hostname, Pessionist $name!
+fi
+fi
+fi
+fi
+fi
 EOF
+echo "It is $date on $day ."
